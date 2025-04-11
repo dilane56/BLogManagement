@@ -2,6 +2,7 @@ package org.kfokam48.blogmanagment.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.kfokam48.blogmanagment.dto.CommentaireDto;
 import org.kfokam48.blogmanagment.dto.CommentaireResponseDTO;
 import org.kfokam48.blogmanagment.model.Commentaire;
@@ -24,7 +25,7 @@ public class CommentaireController {
 
     @PostMapping
     @Operation(summary = "Ajouter un Commentaire a un article")
-    public CommentaireResponseDTO addCommentaire(@RequestParam Long articleId, @RequestBody CommentaireDto commentaire) {
+    public CommentaireResponseDTO addCommentaire(@RequestParam Long articleId,@Valid @RequestBody CommentaireDto commentaire) {
         return commentaireService.addCommentaire(articleId, commentaire);
     }
 
@@ -49,7 +50,7 @@ public class CommentaireController {
 
     @PutMapping("/update/{id}")
     @Operation(summary = "Mettre a jour un commentaire a l'aide de son ID")
-    public CommentaireResponseDTO updateCommentaire(@PathVariable Long id, @RequestBody CommentaireDto commentaire) {
+    public CommentaireResponseDTO updateCommentaire(@PathVariable Long id,@Valid @RequestBody CommentaireDto commentaire) {
        return commentaireService.updateCommentaire(id, commentaire);
     }
 }

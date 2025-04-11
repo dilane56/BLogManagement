@@ -2,6 +2,7 @@ package org.kfokam48.blogmanagment.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.kfokam48.blogmanagment.dto.ArticleDto;
 import org.kfokam48.blogmanagment.dto.ArticleResponseDto;
 import org.kfokam48.blogmanagment.model.Article;
@@ -24,7 +25,7 @@ public class ArticleController {
 
     @PostMapping
     @Operation(summary = "Ajouter un article")
-    public Article createArticle(@RequestBody ArticleDto article) {
+    public Article createArticle(@Valid @RequestBody ArticleDto article) {
         return articleService.createArticle(article);
     }
 
@@ -42,7 +43,7 @@ public class ArticleController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Modifier  un article")
-    public ArticleResponseDto updateArticle(@PathVariable Long id, @RequestBody ArticleDto articleDetails) {
+    public ArticleResponseDto updateArticle(@Valid @PathVariable Long id, @RequestBody ArticleDto articleDetails) {
       return articleService.updateArticle(id, articleDetails);
     }
 
