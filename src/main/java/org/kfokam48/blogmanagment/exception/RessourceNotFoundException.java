@@ -1,0 +1,7 @@
+package org.kfokam48.blogmanagment.exception;
+
+public class RessourceNotFoundException extends RuntimeException {
+    public RessourceNotFoundException(String message) {
+        super(message);
+    }
+}
